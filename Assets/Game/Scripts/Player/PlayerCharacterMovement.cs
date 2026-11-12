@@ -17,6 +17,7 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private bool _isGrounded;
     private bool _isSprinting;
+    public bool IsSprinting => _isSprinting;
 
     private void CheckIsGrounded()
     {
