@@ -19,16 +19,26 @@ public class PlayerCharacterMovement : MonoBehaviour
     private bool _isSprinting;
     public bool IsSprinting => _isSprinting;
 
+    /// <summary>
+    /// Check if the player is currently grounded or not
+    /// </summary>
     private void CheckIsGrounded()
     {
         LayerMask groundLayer = LayerMask.GetMask("Ground");
         _isGrounded = Physics.CheckSphere(transform.position, 0.5f, groundLayer);
     }
 
+    /// <summary>
+    /// Determine direction of movement based on WASD input
+    /// </summary>
+    /// <param name="inputDirection"></param>
     public void SetMoveDirection(Vector2 inputDirection) {
         _movementDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
     }
 
+    /// <summary>
+    /// Calculate grounded movement
+    /// </summary>
     public void CalculateVelocityXZ() {
         Transform cameraTransform = Camera.main.transform;
 
@@ -46,11 +56,17 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Calculate gravity speed
+    /// </summary>
     public void CalculateVelocityY()
     {
         _velocityY = _velocityY + Physics.gravity.y * _gravityScale * Time.deltaTime;
     }
 
+    /// <summary>
+    /// Reset vertical speed to make sure any platforming works
+    /// </summary>
     private void ResetVelocityY()
     {
         if (_isGrounded && _velocityY < 0)
@@ -59,6 +75,9 @@ public class PlayerCharacterMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculate grounded movement acceleration and decelerate
+    /// </summary>
     private void CalculateAcceleration()
     {
         if(_movementDirection.magnitude > 0.01)
@@ -80,11 +99,18 @@ public class PlayerCharacterMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set sprint bool flag
+    /// </summary>
+    /// <param name="isSprinting"></param>
     public void SetSprint(bool isSprinting)
     {
         _isSprinting = isSprinting;
     }
 
+    /// <summary>
+    /// Perform velocity calculation and call Move from CharacterController component
+    /// </summary>
     public void Move() {
         CalculateVelocityXZ();
         CalculateVelocityY();

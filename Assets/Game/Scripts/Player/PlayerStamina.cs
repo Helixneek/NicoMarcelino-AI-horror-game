@@ -21,8 +21,10 @@ public class PlayerStamina : MonoBehaviour
 
     public void CalculateStamina()
     {
+        // Check if currently sprinting
         if (_characterMovement.IsSprinting)
         {
+            // If there is stamina left, reduce it based on cost and time spent sprinting
             if (_currentStamina > 0)
             {
                 _currentStamina -= _sprintStaminaCost * Time.deltaTime;
@@ -47,9 +49,13 @@ public class PlayerStamina : MonoBehaviour
         Debug_UpdateStaminaText();
     }
 
+
+    #region DEBUG
     private void Debug_UpdateStaminaText()
     {
         if(debug_staminaText == null) return;
         debug_staminaText.SetText($"Stamina: {_currentStamina:F1}/{_maxStamina:F1}");
     }
+
+    #endregion
 }
