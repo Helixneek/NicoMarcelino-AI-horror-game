@@ -11,6 +11,7 @@ namespace AgateAIHorror.Core
 
         public UnityEvent<Vector2> OnMoveInput;
         public UnityEvent<bool> OnSprintInput;
+        public UnityEvent<bool> OnInteractInput;
 
         private void Awake()
         {
@@ -25,7 +26,7 @@ namespace AgateAIHorror.Core
         {
             if (context.performed)
             {
-                Debug.Log("Interact");
+                OnInteractInput?.Invoke(true);
             }
         }
 

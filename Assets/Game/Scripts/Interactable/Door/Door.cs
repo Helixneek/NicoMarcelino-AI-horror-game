@@ -1,3 +1,4 @@
+using AgateAIHorror.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,17 +23,30 @@ namespace AgateAIHorror.Interactable
         public UnityEvent OnDoorOpen, OnDoorClose;
 
         [ContextMenu("Interact with Door")]
-        public void Interact()
+        public void Interact(PlayerCharacter player)
         {
-            if (_isOpen)
+            if(_isLocked)
             {
-                Close();
-
+                bool hasKey = player.Inventory.CheckItem(_keyID);
+                if(hasKey)
+                {
+                    _isLocked = false;
+                    Open();
+                }
             }
             else
             {
-                Open();
+                if (_isOpen)
+                {
+                    Close();
+
+                }
+                else
+                {
+                    Open();
+                }
             }
+            
         }
 
         public virtual void Open()

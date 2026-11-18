@@ -1,22 +1,30 @@
+using AgateAIHorror.Player;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AgateAIHorror.Interactable
 {
     public class Item : MonoBehaviour, IInteractable, IPickable
     {
-        [SerializeField] private string _itemName;
+        [SerializeField] private ItemData _itemData;
 
-        public String Name => _itemName;
+        public string Name => _itemData.Name;
+        public UnityEvent OnItemPicked;
 
-        public void Interact()
+        [ContextMenu("Pick up Item")]
+        public void Interact(PlayerCharacter player)
         {
-            Pickup();
+            Pickup(player);
         }
 
-        public void Pickup()
+        public void Pickup(PlayerCharacter player)
         {
-            throw new NotImplementedException();
+            ItemData newData = new(_itemData.ID, _itemData.Name);
+            player.Inventory.AddItem(newData);
+
+            OnItemPicked?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
