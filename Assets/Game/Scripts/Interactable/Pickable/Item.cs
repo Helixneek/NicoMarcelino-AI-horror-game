@@ -1,19 +1,22 @@
 using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IInteractable, IPickable
+namespace AgateAIHorror.Interactable
 {
-    [SerializeField] private string _itemName;
-
-    public String Name => _itemName;
-
-    public void Interact()
+    public class Item : MonoBehaviour, IInteractable, IPickable
     {
-        Pickup();
-    }
+        [SerializeField] private string _itemName;
 
-    public void Pickup()
-    {
-        throw new NotImplementedException();
+        public String Name => _itemName;
+
+        public void Interact()
+        {
+            Pickup();
+        }
+
+        public void Pickup()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

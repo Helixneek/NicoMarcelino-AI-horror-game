@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IPickable
+namespace AgateAIHorror.Interactable
 {
-    public void Pickup();
+    public interface IPickable
+    {
+        public void Pickup();
+    }
 }
