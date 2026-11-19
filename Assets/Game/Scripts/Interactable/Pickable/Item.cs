@@ -18,7 +18,7 @@ namespace AgateAIHorror.Interactable
             Pickup(player);
         }
 
-        public void Pickup(PlayerCharacter player)
+        public virtual void Pickup(PlayerCharacter player)
         {
             ItemData newData = new(_itemData.ID, _itemData.Name);
             player.Inventory.AddItem(newData);
