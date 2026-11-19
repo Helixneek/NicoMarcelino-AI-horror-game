@@ -12,6 +12,13 @@ namespace AgateAIHorror.Player
         private IInteractable _currentDetectedInteractable;
         private bool _isInteracting;
 
+        public bool Enabled { get; private set; } = true;
+
+        public void SetEnabled(bool enabled)
+        {
+            Enabled = enabled;
+        }
+
         private void Update()
         {
             UpdateDetection();
@@ -22,6 +29,12 @@ namespace AgateAIHorror.Player
             if(_isInteracting)
             {
                 _isInteracting = false;
+                return;
+            }
+
+            if(!Enabled)
+            {
+                _currentDetectedInteractable = null;
                 return;
             }
 
@@ -64,6 +77,8 @@ namespace AgateAIHorror.Player
         {
             Gizmos.color = Color.red;
             Transform cameraTransform = Camera.main.transform;
+
+            if (!Enabled) return;
 
             bool isDetectingInteractable = Physics.BoxCast(cameraTransform.position,
                                                             _detectorBoxSize * 0.5f,

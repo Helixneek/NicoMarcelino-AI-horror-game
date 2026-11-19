@@ -21,6 +21,13 @@ namespace AgateAIHorror.Player
         private bool _isSprinting;
         public bool IsSprinting => _isSprinting;
 
+        public bool Enabled { get; private set; } = true;
+
+        public void SetEnabled(bool enabled)
+        {
+            Enabled = enabled;
+        }
+
         /// <summary>
         /// Check if the player is currently grounded or not
         /// </summary>
@@ -119,12 +126,15 @@ namespace AgateAIHorror.Player
         /// </summary>
         public void Move()
         {
-            CalculateVelocityXZ();
-            CalculateVelocityY();
+            if(Enabled)
+            {
+                CalculateVelocityXZ();
+                CalculateVelocityY();
 
-            Vector3 velocity = new Vector3(_velocityXZ.x, _velocityY, _velocityXZ.z);
+                Vector3 velocity = new Vector3(_velocityXZ.x, _velocityY, _velocityXZ.z);
 
-            _characterController.Move(velocity);
+                _characterController.Move(velocity);
+            }
         }
 
         private void Update()

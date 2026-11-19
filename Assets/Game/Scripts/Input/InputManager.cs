@@ -11,7 +11,8 @@ namespace AgateAIHorror.Core
 
         public UnityEvent<Vector2> OnMoveInput;
         public UnityEvent<bool> OnSprintInput;
-        public UnityEvent<bool> OnInteractInput;
+        public UnityEvent OnInteractInput;
+        public UnityEvent OnFlashlightInput;
 
         private void Awake()
         {
@@ -26,7 +27,7 @@ namespace AgateAIHorror.Core
         {
             if (context.performed)
             {
-                OnInteractInput?.Invoke(true);
+                OnInteractInput?.Invoke();
             }
         }
 
@@ -45,6 +46,14 @@ namespace AgateAIHorror.Core
             if (context.canceled)
             {
                 OnSprintInput?.Invoke(false);
+            }
+        }
+
+        public void OnFlashlight(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnFlashlightInput?.Invoke();
             }
         }
     }
