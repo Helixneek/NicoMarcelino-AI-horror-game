@@ -61,16 +61,19 @@ namespace AgateAIHorror.Interactable
 
             float time = 0f;
             Vector3 startPosition = _hidingPlayer.transform.position;
-            float startRotation = _hidingPlayer.Camera.PanAxis;
+            Quaternion startTransformRotation = _hidingPlayer.transform.rotation;
+            float startCameraPan = _hidingPlayer.Camera.PanAxis;
 
             while (time < _hideAnimationDuration)
             {
                 time += Time.deltaTime;
+                float t = time / _hideAnimationDuration;
 
                 // Interpolate position
-                _hidingPlayer.transform.position = Vector3.Lerp(startPosition, _hidePosition.position, time / _hideAnimationDuration);
+                _hidingPlayer.transform.position = Vector3.Lerp(startPosition, _hidePosition.position, t);
                 // Interpolate rotation
-                float panAxis = Mathf.Lerp(startRotation, _hidePosition.eulerAngles.y, time / _hideAnimationDuration);
+                _hidingPlayer.transform.rotation = Quaternion.Slerp(startTransformRotation, _hidePosition.rotation, t);
+                float panAxis = Mathf.LerpAngle(startCameraPan, _hidePosition.eulerAngles.y, t);
                 _hidingPlayer.Camera.SetPanAxisValue(panAxis);
 
                 yield return null;
@@ -98,17 +101,21 @@ namespace AgateAIHorror.Interactable
 
             float time = 0f;
             Vector3 startPosition = _hidingPlayer.transform.position;
-            float startRotation = _hidingPlayer.Camera.PanAxis;
+            Quaternion startTransformRotation = _hidingPlayer.transform.rotation;
+            float startCameraPan = _hidingPlayer.Camera.PanAxis;
 
             while (time < _hideAnimationDuration)
             {
                 time += Time.deltaTime;
+                float t = time / _hideAnimationDuration;
 
                 // Interpolate position
-                _hidingPlayer.transform.position = Vector3.Lerp(startPosition, _unhidePosition.position, time / _hideAnimationDuration);
+                _hidingPlayer.transform.position = Vector3.Lerp(startPosition, _unhidePosition.position, t);
                 // Interpolate rotation
-                float panAxis = Mathf.Lerp(startRotation, _unhidePosition.eulerAngles.y, time / _hideAnimationDuration);
+                _hidingPlayer.transform.rotation = Quaternion.Slerp(startTransformRotation, _unhidePosition.rotation, t);
+                float panAxis = Mathf.Lerp(startCameraPan, _unhidePosition.eulerAngles.y, time / _hideAnimationDuration);
                 _hidingPlayer.Camera.SetPanAxisValue(panAxis);
+
 
                 yield return null;
             }
