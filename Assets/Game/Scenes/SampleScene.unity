@@ -1495,11 +1495,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5473599297941317083, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1087805835}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4665149922695118689, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
       insertIndex: -1
       addedObject: {fileID: 758067450}
+    - targetCorrespondingSourceObject: {fileID: 4665149922695118689, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 758067453}
+    - targetCorrespondingSourceObject: {fileID: 4665149922695118689, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 758067454}
+    - targetCorrespondingSourceObject: {fileID: 4665149922695118689, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 758067452}
   m_SourcePrefab: {fileID: 100100000, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
 --- !u!1 &758067449 stripped
 GameObject:
@@ -1528,6 +1540,75 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &758067451 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5473599297941317083, guid: 340fc2bc8e3c86f45bf5880f7b53c959, type: 3}
+  m_PrefabInstance: {fileID: 758067448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &758067452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758067449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0407680f01cae43b9f7ef655961ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 866397954}
+  _eyePosition: {fileID: 1087805835}
+  _viewDistance: 5
+  _viewAngle: 70
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 384
+--- !u!114 &758067453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758067449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 3591792373937473021, guid: 782339e0143682e45b416d716224607a, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 6257116732191408370
+  m_OriginalGraph: {fileID: 3591792373937473021, guid: 782339e0143682e45b416d716224607a, type: 2}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6257116732191408370
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 758067449}
+--- !u!114 &758067454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758067449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a9c059defc9e346aff8f84e858c436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviorGraphAgent: {fileID: 758067453}
+  _navMeshAgent: {fileID: 758067450}
+  _targetPlayer: {fileID: 866397959}
+  _sightPerception: {fileID: 758067452}
 --- !u!1 &778687038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 866397954}
   - component: {fileID: 866397956}
+  - component: {fileID: 866397963}
   - component: {fileID: 866397959}
   - component: {fileID: 866397955}
   - component: {fileID: 866397957}
@@ -1759,7 +1841,7 @@ GameObject:
   - component: {fileID: 866397960}
   - component: {fileID: 866397961}
   - component: {fileID: 866397962}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1923,6 +2005,29 @@ MonoBehaviour:
   _initialBatteryLevel: 100
   _batteryDrainRate: 20
   _debug_flashlightText: {fileID: 1995786238}
+--- !u!136 &866397963
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866397953}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &892529725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2330,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969103951}
   m_CullTransparentMesh: 1
+--- !u!1 &1087805834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087805835}
+  m_Layer: 0
+  m_Name: Eye Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087805835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087805834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.074, y: 1.5634, z: 0.3164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 758067451}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130824720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,7 +2401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183618292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LookPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2797,7 +2933,7 @@ GameObject:
   - component: {fileID: 1624977860}
   - component: {fileID: 1624977858}
   - component: {fileID: 1624977859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
