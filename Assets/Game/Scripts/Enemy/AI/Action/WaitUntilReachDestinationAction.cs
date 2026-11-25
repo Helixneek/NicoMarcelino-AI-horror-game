@@ -7,11 +7,10 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Wait Until Reach Destination", story: "[AI] will wait until they reach destination", category: "Action", id: "955f4c61e5116cef8ca8b2e6d8f58ad9")]
+[NodeDescription(name: "Wait Until Reach Destination", story: "[AI] wait until reach destination", category: "Action", id: "955f4c61e5116cef8ca8b2e6d8f58ad9")]
 public partial class WaitUntilReachDestinationAction : Action
 {
     [SerializeReference] public BlackboardVariable<GhostAIController> AI;
-
     protected override Status OnStart()
     {
         return Status.Running;
