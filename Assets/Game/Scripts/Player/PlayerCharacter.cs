@@ -34,6 +34,17 @@ namespace AgateAIHorror.Player
         {
             IsHiding = isHiding;
         }
+
+        public void OnDeath()
+        {
+            _movement.enabled = false;
+            _interactDetector.enabled = false;
+            _camera.enabled = false;
+            _flashlight.enabled = false;
+
+            // Stamina, inventory not disabled because its unnecessary
+            // Input not disabled because it might fuck with any other inputs
+        }
     }
 
 }
