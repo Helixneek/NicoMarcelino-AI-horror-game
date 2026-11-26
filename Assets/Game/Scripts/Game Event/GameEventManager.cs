@@ -39,7 +39,7 @@ namespace AgateAIHorror.Core
             }
         }
 
-        public void Trigger(string id)
+        public void TriggerEvent(string id)
         {
             bool isGameEventFound = _gameEvents.TryGetValue(id, out GameEventBase gameEvent);
             if(isGameEventFound)
