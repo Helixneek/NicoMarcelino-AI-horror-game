@@ -42,7 +42,7 @@ namespace AgateAIHorror.Enemy
             // Spawn ghost behind player with a random distance
             float spawnDistance = Random.Range(_minSpawnDistance, _maxSpawnDistance);
             Vector3 spawnPos = _ghostAIController.TargetPlayer.transform.position - _ghostAIController.TargetPlayer.transform.forward * spawnDistance;
-            spawnPos.y = _ghostAIController.transform.position.y;
+            spawnPos.y = _ghostAIController.TargetPlayer.transform.position.y;
 
             _ghostAIController.NavMeshAgent.enabled = true;
             _ghostAIController.NavMeshAgent.Warp(spawnPos);
